@@ -27,3 +27,8 @@ IdentityFile /root/.ssh/router
 30 5 * * * /bin/bash /home/tommy/RouterBackup.sh
 ```
 This runs the script every day at 5:30 AM. This can be adjusted to fit your needs.
+
+### If the script needs to be ran manually, you can do so by using the following command:
+```bash
+/bin/bash ./RouterBackup.sh
+
