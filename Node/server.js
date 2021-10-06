@@ -22,7 +22,7 @@ http.createServer(function(req, res){
           <body>
             <p>Hostname: ${myHostName}</p>
             <p>IP: ${ip.address()}</p>
-            <p>Server Uptime: </p>
+            <p>Server Uptime: Days: ${parseInt(os.uptime() / 86400 )}, Hours: ${parseInt((os.uptime() % 86400) / 3600)}, Minutes: ${parseInt(((os.uptime() % 86400) % 3600) / 60)}, Seconds: ${parseInt(((os.uptime() % 86400) % 3600) % 60)} </p>
             <p>Total Memory: </p>
             <p>Free Memory: </p>
             <p>Number of CPUs: </p>            
