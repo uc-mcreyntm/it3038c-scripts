@@ -33,3 +33,4 @@ echo "CPU: $PROXMOXCPU% <br>" >> '/var/www/html/stats/index.html'
 #### This will run the script every minute, but this can be adjusted to fit your needs
 
 #### Once you have added all of the servers you want to monitor, head over to your webpage and look at the results!
+[![project2.png](https://i.postimg.cc/4xnkbKSQ/project2.png)](https://postimg.cc/hXF5KGgX)
