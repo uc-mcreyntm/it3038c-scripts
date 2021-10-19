@@ -1,3 +1,4 @@
+#!/bin/bash
 PROXMOXCPU=`cat <(ssh proxmox 'top -b -n 1' | awk 'FNR == 3 {print $2}')`;
 PROXMOXHOST=`cat <(ssh proxmox 'hostname')`;
 PROXMOXUPTIME=`cat <(ssh proxmox 'top -b -n 1' | awk 'FNR == 1 {print $5}')`;
