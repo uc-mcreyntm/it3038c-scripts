@@ -7,12 +7,12 @@
 ##### After setting up keypairs with the required machines, make sure to add all of the required information into the ~/.ssh/config file. Here is what mine looks like:
 ```
 Host proxmox
-Hostname 192.168.1.19
+Hostname 192.168.200.19
 user root
 IdentityFile /root/.ssh/proxmox
 
 Host plex
-Hostname 192.168.1.6
+Hostname 192.168.200.6
 user root
 IdentityFile /root/.ssh/plex
 ```
