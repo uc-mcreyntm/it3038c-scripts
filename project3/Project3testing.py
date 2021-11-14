@@ -1,21 +1,22 @@
-import subprocess
 import os
-import sys
+import re
+from sys import stdout
 
 DEVNULL = open(os.devnull)
+
+
 #Here, I will list all of the servers that I want to update
 servers = ['proxmox', 'vpn', 'ubuntu', 'plex']
 
-#Update all of the servers listed in the array "servers"
+
 for x in servers:
- main = subprocess.Popen('ssh {} apt update'.format(x), shell=False, stdout=DEVNULL)
+    update = os.popen('ssh {} apt-get update'.format(x))
+    output = update.read()    
+    print('Updating {}...'.format(x))
 
-# After apt update is ran, it will allow the servers to see which packages need to be updated.
+#Great, now I'm going to run an apt upgrade on these machines
 
-#Run apt list --upgradeable to find any applications that need to be upgraded
-
-#for x in servers:
-    #upgrade = subprocess.Popen("ssh {} apt list --upgradeable".format(x))
-
-  #  output = upgrade.read()
-  #  print(output)
+for x in servers:
+    update = os.popen('ssh {} apt list --upgradable'.format(x))
+    upgrade = update.read()    
+    print(upgrade + 'Testing')
