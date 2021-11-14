@@ -1,6 +1,13 @@
 import os
+#Here, I will list all of the servers that I want to update
+servers = ['proxmox', 'vpn', 'ubuntu', 'plex']
 
-testing = os.popen('ssh proxmox date')
-output = testing.read()
 
-print(output)
+for x in servers:
+    testing = os.popen('ssh {} hostname'.format(x))
+    output = testing.read()    
+    print(output)
+
+
+
+
