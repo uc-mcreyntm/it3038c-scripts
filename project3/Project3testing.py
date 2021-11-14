@@ -19,7 +19,3 @@ for x in servers:
 
   #  output = upgrade.read()
   #  print(output)
-
-
-
-
