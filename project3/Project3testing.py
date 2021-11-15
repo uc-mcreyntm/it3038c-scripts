@@ -14,9 +14,13 @@ for x in servers:
     output = update.read()    
     print('Updating {}...'.format(x))
 
-#Great, now I'm going to run an apt upgrade on these machines
+#Great, now I'm going to run an apt upgrade on these machines to find out the packages that need to be upgraded
 
 for x in servers:
     update = os.popen('ssh {} apt list --upgradable'.format(x))
     upgrade = update.read()    
     print(upgrade + 'Testing')
+   
+   
+with open("C:/temp/write.txt", "w") as newfile:
+        newfile.write(upgrade)
