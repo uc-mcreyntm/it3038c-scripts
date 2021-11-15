@@ -2,11 +2,11 @@ import os
 import re
 from sys import stdout
 
-DEVNULL = open(os.devnull)
 
 
 #Here, I will list all of the servers that I want to update
 servers = ['proxmox', 'vpn', 'ubuntu', 'plex']
+upgradeList = []
 
 
 for x in servers:
@@ -18,9 +18,15 @@ for x in servers:
 
 for x in servers:
     update = os.popen('ssh {} apt list --upgradable'.format(x))
-    upgrade = update.read()    
+    upgrade = update.read()   
+    upgradeList.append(upgrade)
     print(upgrade + 'Testing')
+
+print(upgrade[0] + "Appending")
+#for z in upgradeList:
+   # print(upgradeList[z] + "Array")
    
    
+   #Write to file
 with open("C:/temp/write.txt", "w") as newfile:
-        newfile.write(upgrade)
+    newfile.write(upgrade)
