@@ -18,15 +18,17 @@ for x in servers:
 
 for x in servers:
     update = os.popen('ssh {} apt list --upgradable'.format(x))
-    upgrade = update.read()   
-    upgradeList.append(upgrade)
-    print(upgrade + 'Testing')
+    upgrade = update.read()
+    reupgrade = re.search('(?<=\n).*(?=\n)', upgrade)   
+    upgradeList.append(x + " \n" + str(reupgrade) + " \n")
+    #print(upgrade + 'Testing')
+   
+   
 
-print(upgrade[0] + "Appending")
-#for z in upgradeList:
-   # print(upgradeList[z] + "Array")
-   
-   
-   #Write to file
+   #Create/Overwrite file so that it is empty
 with open("C:/temp/write.txt", "w") as newfile:
-    newfile.write(upgrade)
+    newfile.write("")
+
+# Append data to file
+with open("C:/temp/write.txt", "a") as writefile:
+    writefile.writelines(upgradeList)
