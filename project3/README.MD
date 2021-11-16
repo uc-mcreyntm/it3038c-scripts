@@ -16,3 +16,43 @@ awk --version
 ```
 ### Python
 #### Install Python 3.10 from [here](https://www.python.org/downloads/)
+
+### SSH keypairs
+#### This script makes heavy use of remoting into other machines using ssh keypairs, so you will need to set up keypairs with every server you want to monitor
+#### After setting up keypairs with the required machines, make sure to add all of the required information into the C:\Users\YOURUSERNAMEHERE\\.ssh\config file. Here is what mine looks like:
+```
+Host proxmox
+Hostname 192.168.200.19
+user root
+IdentityFile /root/.ssh/proxmox
+
+Host plex
+Hostname 192.168.200.6
+user root
+IdentityFile /root/.ssh/plex
+```
+
+### Additionally, the output of this script is designed to be displayed as an HTML page, so setting up a webserver of any kind will be nesessary
+
+## Modifying the Script for Your Needs
+### At the top of the script, note the "servers", list variable:
+```python
+servers = ['proxmox', 'vpn', 'ubuntu', 'plex']
+```
+### You will add and change these values to match the "Host" value of your servers found in your config (C:\Users\YOURUSERNAMEHERE\\.ssh\config)
+
+### Next, you will add paths to the "formatted" and "unformatted" variables near the top
+```python
+unformatted = "Z:/html/upgrades/indexunformat.html"
+formatted = "Z:/html/upgrades/index.html"
+```
+### Note: The unformatted file is arbitrary, and does not need to have any specific name or location, but the formatted file should be "index.html" in a subdirectory that is inside of a webserver.
+
+
+### Running the Script
+
+#### The script can be ran by entering the following in a command line:
+```powershell
+python C:\path\to\file
+```
+#### Additionally, you can automate this script with Cron if you're on Linux, and the Task Scheduler if you're on Windows.
