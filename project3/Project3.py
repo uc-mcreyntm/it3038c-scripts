@@ -1,10 +1,8 @@
 import os
-import re
 from sys import stdout
 
 
-
-#Here, I will list all of the servers that I want to update
+#Here, I will list all of the servers that I want to have update information on
 servers = ['proxmox', 'vpn', 'ubuntu', 'plex']
 upgradeList = []
 
@@ -21,12 +19,10 @@ for x in servers:
     upgrade = update.read()
     
     if len(upgrade) > 0:
-        upgradeList.append("<h1>" + x + "</h1>" + "<br> \n" + str(upgrade) + " \n <br>")
+        upgradeList.append("<h1>" + x + ":" + "</h1>" + "<br> \n" + str(upgrade) + " \n <br>")
     else:
-        upgradeList.append("<h1>" + x + "</h1>" + "<br> \n" + "No updates available" + " \n <br>")
+        upgradeList.append("<h1>" + x + ":" + "</h1>" + "<br> \n" + "No updates available" + " \n <br>")
 
-   
-   
 
    #Create/Overwrite file so that it is empty
 with open("Z:/html/upgrades/indexunformat.html", "w") as newfile:
