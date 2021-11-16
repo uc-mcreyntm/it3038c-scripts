@@ -19,16 +19,27 @@ for x in servers:
 for x in servers:
     update = os.popen('ssh {} apt list --upgradable | awk NR!=1'.format(x))
     upgrade = update.read()
-    #reupgrade = re.search('(?<=\n).*(?=\n)', upgrade)   
-    upgradeList.append(x + " \n" + str(upgrade) + " \n")
-    #print(upgrade + 'Testing')
+    
+    if len(upgrade) > 0:
+        upgradeList.append("<h1>" + x + "</h1>" + "<br> \n" + str(upgrade) + " \n <br>")
+    else:
+        upgradeList.append("<h1>" + x + "</h1>" + "<br> \n" + "No updates available" + " \n <br>")
+
    
    
 
    #Create/Overwrite file so that it is empty
-with open("C:/temp/write.txt", "w") as newfile:
+with open("Z:/html/upgrades/indexunformat.html", "w") as newfile:
     newfile.write("")
 
 # Append data to file
-with open("C:/temp/write.txt", "a") as writefile:
+with open("Z:/html/upgrades/indexunformat.html", "a") as writefile:
     writefile.writelines(upgradeList)
+
+#Put a new line after each application that needs upgraded for easier reading
+
+with open("Z:/html/upgrades/indexunformat.html", "r") as input:
+    with open("Z:/html/upgrades/index.html", "w") as output:
+        for lines in input:
+            lines = lines.rstrip('\n') + '<br>'
+            print(lines, file=output)
