@@ -17,10 +17,10 @@ for x in servers:
 #Great, now I'm going to run an apt upgrade on these machines to find out the packages that need to be upgraded
 
 for x in servers:
-    update = os.popen('ssh {} apt list --upgradable'.format(x))
+    update = os.popen('ssh {} apt list --upgradable | awk NR!=1'.format(x))
     upgrade = update.read()
-    reupgrade = re.search('(?<=\n).*(?=\n)', upgrade)   
-    upgradeList.append(x + " \n" + str(reupgrade) + " \n")
+    #reupgrade = re.search('(?<=\n).*(?=\n)', upgrade)   
+    upgradeList.append(x + " \n" + str(upgrade) + " \n")
     #print(upgrade + 'Testing')
    
    
