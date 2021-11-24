@@ -56,3 +56,6 @@ formatted = "Z:/html/upgrades/index.html"
 python C:\path\to\file
 ```
 #### Additionally, you can automate this script with Cron if you're on Linux, and the Task Scheduler if you're on Windows.
+
+## Generated HTML file
+[![website.png](https://i.postimg.cc/660BwdFG/website.png)](https://postimg.cc/c6rpB8xs)
